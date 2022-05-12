@@ -1,0 +1,116 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+
+<MudGrid>
+    <MudItem xs="12" sm="6"></MudItem>
+
+    <MudItem xs="12" sm="6">
+        <MudText Class="mr-16" Align="Align.End" Typo="Typo.h4">Hey, nire!</MudText>
+    </MudItem>
+
+    <MudItem xs="12">
+        <MudText Class="mr-16" Align="Align.End" Typo="Typo.h5">Have a good day.</MudText>
+    </MudItem>
+
+    <MudItem xs="6">
+        <MudPaper Class="gap-x-12 d-flex flex-wrap ml-16 mr-16" Elevation="0">
+            <!--gap-4-->
+            <MudPaper Class="flex-auto justify-center pa-10" Height="200px" Width="200px" Outlined="true">
+                <!--pa-16-->
+                <MudText Typo="Typo.h5">Pending Tasks</MudText>
+                <MudBadge Content="3" Color="Color.Primary" Overlap="true"  Class="mx-6 my-4">
+                    <MudIcon Icon=@Icons.Filled.Assignment Style="font-size: 4rem;"></MudIcon>
+                </MudBadge>
+            </MudPaper>
+
+            <MudPaper Class="flex-auto justify-center pa-10" Height="200px" Width="200px" Outlined="true">
+                <MudText Typo="Typo.h5">Future Events</MudText>
+                <MudBadge Content="2" Color="Color.Primary"  Overlap="true" Class="mx-6 my-4">
+                    <MudIcon Icon=@Icons.Filled.CalendarMonth Style="font-size: 4rem;"></MudIcon>
+                </MudBadge>
+            </MudPaper>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="6" sm="2"></MudItem>
+
+    <MudItem xs="6" sm="2">
+        <!--Class="position: relative;" coisas tao no container, pode ser padding center-->
+
+        <MudDatePicker FixYear=2022 AnchorOrigin="Origin.CenterCenter" PickerVariant="PickerVariant.Static"
+                       Rounded="true" Elevation="3" Date="@(DateTime.Today)" Style="overflow-x: auto" />
+
+    </MudItem> <!--Today.AddDays(1) adiciona o seletor um dia a frente -->
+
+    <MudItem xs="12">
+        <MudText Class="ml-16" Typo="Typo.h4">What's on your mind?</MudText>
+    </MudItem>
+
+    <MudItem xs="6">
+        <!--bloco notas-->
+        <MudSimpleTable Class="ml-16 mr-16" Hover="@hover" Style="overflow-x: auto;">
+
+            <MudToolBar>
+                <MudText Typo="Typo.h6">thoughts and ideas!</MudText>
+                <MudSpacer />
+                <MudTextField @bind-Value="_searchString" Placeholder="search" Adornment="Adornment.Start" Immediate="true"
+                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </MudToolBar>
+            <tbody>
+                <tr><td>1oooooooooooooooo estou algopebsabdi</td></tr>
+                <tr><td>2oooooooooooooooo estou algopebsabdi</td></tr>
+                <tr><td>1oooooooooooooooo estou algopebsabdi</td></tr>
+                <tr><td>2oooooooooooooooo estou algopebsabdi</td></tr>
+                <tr><td>3oooooooooooooooo estou algopebsabdi</td></tr>
+                <tr><td>3oooooooooooooooo estou algopebsabdi</td></tr>
+            </tbody>
+            <MudToolBar Class="pb-lg-5">
+                <MudTextField T="string" Label="write here" Variant="Variant.Outlined" Lines="1" />
+                <MudSpacer />
+                <MudTooltip Text="Add">
+                    <MudIconButton Icon="@Icons.Material.Outlined.Add" />
+                </MudTooltip>
+            </MudToolBar>
+
+        </MudSimpleTable>
+    </MudItem> <!--bloco notas-->
+
+
+    <MudItem xs="12" sm="3">
+        <!--Style="height:100px; width:180px;-->
+        <MudCard Class="ml-16 mr-16" Fluid="true">
+            <MudCardMedia Image="fightclub.jpg" Height="250"/>
+            <MudCardContent>
+                <MudText Typo="Typo.h6">FIGHT CLUB</MudText>
+                <MudText Typo="Typo.body2">I am free in all the ways you are not.</MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+
+    <MudItem xs="12" sm="3">
+        <!--Style="height:100px; width:180px;--> <!--<div class="d-flex flex-grow-1 oi-justify-right gap-1em py-20 pt-4"> formata ele bonitinho-->
+        <MudCard Class=" ml-16 mr-16">
+            <MudCardMedia Image="riddler.jpg" Height="250" />
+            <MudCardContent>
+                <MudText Typo="Typo.h6">BATMAN</MudText>
+                <MudText Typo="Typo.body2">If you are justice, please do not lie.</MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" Color="Color.Primary">Share</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+
+</MudGrid>
+
+@code {
+    private bool hover = true;
+    private string _searchString;
+
+
+}

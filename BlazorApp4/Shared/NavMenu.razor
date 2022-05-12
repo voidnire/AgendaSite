@@ -1,0 +1,23 @@
+﻿
+<MudPaper Width="250px" Elevation="0" Class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <MudNavMenu Rounded="true" Margin="Margin.Dense" Color="Color.Primary" Class="pa-2">
+        <MudText Typo="Typo.h6" Class="px-4">Agenda</MudText>
+        <MudText Typo="Typo.body2" Class="px-4 mud-text-secondary">to do</MudText>
+        <MudDivider Class="my-2"/>
+        <MudNavLink Class="nav-link" Href="/" Icon="@Icons.Filled.Home">Home</MudNavLink>
+        <MudNavLink Class="nav-link" Href="/lists" Icon="@Icons.Filled.Dashboard">Lists</MudNavLink>
+        <MudNavLink Class="nav-link" Href="/events" Icon="@Icons.Filled.Storage">Events</MudNavLink>
+    </MudNavMenu>
+</MudPaper>
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
