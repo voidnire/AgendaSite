@@ -1,19 +1,94 @@
 ﻿@page "/lists"
 
+
 <PageTitle>Lists</PageTitle>
 
 <MudGrid>
-    <MudItem xs="12" sm="2"></MudItem>
-    <MudItem xs="12" sm="6">
-        <MudCard>
 
-        </MudCard>
-    </MudItem>
-    <MudItem xs="12" sm="4"></MudItem>
-    <MudItem xs="12" sm="2">
-        <MudCard>
+    <MudItem xs="12" Class="gap-x-12 d-flex flex-row ml-16 mr-16">
+        <!--header-->
+        <MudContainer Fixed="true">
+            <MudPaper Height="200px" Width="100%" Class="mud-theme-primary py-5">
 
-        </MudCard>
+                <MudItem xs="12" sm="6" Class="d-inline">
+                    <MudText Class="ml-16 mt-5" Align="Align.Start" Typo="Typo.h4">Lists</MudText>
+
+                    <MudText Class="ml-16 mt-1 d-inline m-lg-2" Align="Align.Start" Typo="Typo.h5">
+                        Here you can find your desired shopping list and your to do list,
+                        daily and monthly activities.
+                    </MudText>
+                </MudItem>
+
+                <MudItem xs="12" sm="4" Class="d-inline flex-wrap ml-16 mr-16 align-self-lg-end">
+
+                </MudItem>
+
+            </MudPaper>
+
+        </MudContainer>
+    </MudItem>  <!--end of header-->
+
+    <MudItem xs="12" sm="8" Class="gap-x-12 d-flex flex-row ml-16 mr-16">
+        <ToDoList />
     </MudItem>
-    <MudItem xs="12" sm="2"></MudItem>
+
+
+
+    <MudItem xs="12" sm="3">
+
+        <MudPaper Elevation="1" Class="gap-x-15 d-block mr-16 mt-sm-5">
+
+            <MudExpansionPanel Text="Wishlist">
+                <MudExpansionPanels Text="Wishlist">
+                    <!------------------------------->
+                    <MudStack Justify="Justify.Center">
+                        <!--ou so isso ou so alignitems-->
+                        <!--@ref="_MudList"-->
+                        @foreach (var wish in wishes)
+                        {
+                            int count = 0;
+                            <MudExpansionPanel Text="@wish" MaxHeight="90">
+                                <MudText Typo="Typo.subtitle1">
+                                    @wish
+                                </MudText>
+                            </MudExpansionPanel>
+                        }
+
+                        <MudButton EndIcon="@Icons.Filled.Add" Class="rounded-lg" Size="Size.Medium" Color="Color.Primary">add wish!</MudButton>
+                    </MudStack>
+
+                </MudExpansionPanels><!------------------------------->
+            </MudExpansionPanel>
+
+        </MudPaper>
+
+    </MudItem>
+
+    <MudItem xs="12" sm="4" />
+
 </MudGrid>
+
+@code {
+    private bool hover = true;
+
+    IEnumerable<string> wishes = new List<string>
+        {
+        "new computer", 
+        "money money moeney", 
+        "junji ito manga"
+        };
+
+
+    public class Wishes
+    {
+        public string Name { get; set; }
+        //public decimal Price { get; set; }
+        public string Description { get; set; }
+        public Wishes(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
+    }
+
+}

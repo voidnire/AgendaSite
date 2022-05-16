@@ -35,3 +35,6 @@ C:\Users\laura.vasconcelos\source\repos\BlazorApp4\BlazorApp4\bin\Debug\net6.0\M
 C:\Users\laura.vasconcelos\source\repos\BlazorApp4\BlazorApp4\bin\Debug\net6.0\MudBlazor.dll
 C:\Users\laura.vasconcelos\source\repos\BlazorApp4\BlazorApp4\bin\Debug\net6.0\System.IO.Pipelines.dll
 C:\Users\laura.vasconcelos\source\repos\BlazorApp4\BlazorApp4\obj\Debug\net6.0\BlazorApp4.csproj.CopyComplete
+C:\Users\laura.vasconcelos\source\repos\BlazorApp4\BlazorApp4\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\laura.vasconcelos\source\repos\BlazorApp4\BlazorApp4\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\laura.vasconcelos\source\repos\BlazorApp4\BlazorApp4\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll

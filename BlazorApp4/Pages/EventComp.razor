@@ -1,0 +1,150 @@
+﻿<MudDropContainer T="MonthEventItem" @ref="_dropContainer" Items="@_events" ItemsSelector="@((item,column) => item.Status == column)" ItemDropped="TaskUpdated" Class="d-flex flex-row mx-lg-3">
+    <ChildContent>
+        @foreach (var item in _sections)
+        {
+            <MudPaper Elevation="0" Width="250px" MinHeight="400px" Class="pa-4 ma-4 d-flex flex-column mud-background-gray rounded-lg">
+                <MudToolBar DisableGutters="true">
+                    <MudText Typo="Typo.h5"><b>@item.Name</b></MudText>
+                    <MudSpacer />
+
+                </MudToolBar>
+                <MudDropZone T="MonthEventItem" Identifier="@item.Name" Class="mud-height-full" />
+                @if (item.NewTaskOpen)
+                {
+                    <MudPaper Elevation="25" Class="pa-2 rounded-lg">
+                        <MudTextField @bind-Value="item.NewTaskName" Placeholder="New Event" DisableUnderLine="true" Margin="Margin.Dense" Class="mx-2 mt-n3"></MudTextField>
+                        <MudButton OnClick="@(() => AddTask(item))" Size="Size.Small" Color="Color.Primary" FullWidth="true">Add Event</MudButton>
+
+                    </MudPaper>
+                }
+                else ///thisssssssssssssssss
+                {
+                    <MudButton OnClick="@(() => item.NewTaskOpen = !item.NewTaskOpen)" StartIcon="@Icons.Filled.Add" FullWidth="true" Class="rounded-lg py-2">Add Event</MudButton>
+                }
+            </MudPaper>
+        }
+    </ChildContent>
+    <ItemRenderer>
+        <MudMenu FullWidth="true" ActivationEvent="@MouseEvent.RightClick" PositionAtCursor="true">
+            <ActivatorContent>
+                <MudPaper Elevation="25" Class="pa-4 rounded-lg my-3">
+                    <MudText Typo="Typo.h6">@context.Name</MudText> <!--cada bagulho cada eventoiooii-->
+                </MudPaper>
+            </ActivatorContent>
+            <ChildContent>
+                <MudMenuItem>Edit</MudMenuItem>
+                <MudMenuItem>Delete</MudMenuItem>
+            </ChildContent>
+        </MudMenu>
+    </ItemRenderer>
+</MudDropContainer>
+
+
+@code {
+    private MudDropContainer<MonthEventItem> _dropContainer;
+    private int totalsections = 3;
+
+
+    private bool _addSectionOpen;
+    /* handling board events */
+    private void TaskUpdated(MudItemDropInfo<MonthEventItem> info)
+    {
+        info.Item.Status = info.DropzoneIdentifier;
+    }
+
+    /* Setup for board  */
+    private List<MonthSections> _sections = new()
+        {
+            new MonthSections("This Month", false, String.Empty),
+            new MonthSections("Next Month", false, String.Empty),
+            new MonthSections("Future Months", false, String.Empty),
+        };
+
+    public class MonthSections
+    {
+        public string Name { get; init; }
+        public bool NewTaskOpen { get; set; }
+        public string NewTaskName { get; set; }
+
+        public MonthSections(string name, bool newTaskOpen, string newTaskName)
+        {
+            Name = name;
+            NewTaskOpen = newTaskOpen;
+            NewTaskName = newTaskName;
+        }
+    }
+    public class MonthEventItem
+    {
+        public string Name { get; init; }
+        public string Status { get; set; }
+
+        public MonthEventItem(string name, string status)
+        {
+            Name = name;
+            Status = status;
+        }
+    }
+
+    private List<MonthEventItem> _events = new()
+        {
+            new MonthEventItem("Write unit test", "To Do"),
+            new MonthEventItem("Some docu stuff", "To Do"),
+            new MonthEventItem("Walking the dog", "To Do"),
+        };
+
+    KanBanNewForm newSectionModel = new KanBanNewForm();
+
+    public class KanBanNewForm
+    {
+        [Required]
+        [StringLength(10, ErrorMessage = "Name length can't be more than 8.")]
+        public string Name { get; set; }
+    }
+
+    private void OnValidSectionSubmit(EditContext context)
+    {
+        _sections.Add(new MonthSections(newSectionModel.Name, false, String.Empty));
+        newSectionModel.Name = string.Empty;
+        _addSectionOpen = false;
+        totalsections++;//implemented
+    }
+
+    private void OpenAddNewSection()
+    {
+        _addSectionOpen = true;
+    }
+
+    private void AddTask(MonthSections section)
+    {
+        _events.Add(new MonthEventItem(section.NewTaskName, section.Name));
+        section.NewTaskName = string.Empty;
+        section.NewTaskOpen = false;
+        _dropContainer.Refresh();
+    }
+
+    private void DeleteSection(MonthSections section)
+    {
+        if (_sections.Count == 1)
+        {
+            _events.Clear();
+            _sections.Clear();
+        }
+        else
+        {
+            int newIndex = _sections.IndexOf(section) - 1;
+            if (newIndex < 0)
+            {
+                newIndex = 0;
+            }
+
+            _sections.Remove(section);
+
+            var events = _events.Where(x => x.Status == section.Name);
+            foreach (var item in _events)
+            {
+                item.Status = _sections[newIndex].Name;
+            }
+        }
+        totalsections--;
+    }
+}

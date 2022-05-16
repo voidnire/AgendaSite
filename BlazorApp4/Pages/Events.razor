@@ -1,47 +1,78 @@
 ﻿@page "/events"
 
+@using MudBlazor.Utilities
+
 <PageTitle>Events</PageTitle>
 
 @*@using BlazorApp4.Data
-@inject WeatherForecastService ForecastService*@
+    @inject WeatherForecastService ForecastService*@
 
-<h1>Events</h1>
+    <MudGrid>
+<MudItem xs="12" Class="gap-x-5 d-flex flex-row flex-grow-1 ml-16 mr-16">
+    <!--header-->
+    <MudContainer Fixed="true">
+        <MudPaper Height="200px" Width="100%" Class="mud-theme-primary py-5">
+
+            <MudItem xs="12" sm="6" Class="d-inline">
+                <MudText Class="ml-16 mt-5" Align="Align.Start" Typo="Typo.h4">Events</MudText>
+
+                <MudText Class="ml-16 mt-1 d-inline m-lg-2" Align="Align.Start" Typo="Typo.h5">
+                    Here you can find next events / important dates.
+                </MudText>
+            </MudItem>
 
 
+        </MudPaper>
+
+    </MudContainer>
+</MudItem>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<MudItem xs="3"></MudItem>
+
+<MudItem xs="6">
+
+    <EventComp />
+
+</MudItem>
+
+<MudItem xs="3"></MudItem>
+</MudGrid>
+}<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 @*@if (forecasts == null)
-{
+    {
     <p><em>Loading...</em></p>
-}
-else
-{
+    }
+    else
+    {
     <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
+    <thead>
+    <tr>
+    <th>Date</th>
+    <th>Temp. (C)</th>
+    <th>Temp. (F)</th>
+    <th>Summary</th>
+    </tr>
+    </thead>
+    <tbody>
+    foreach (var forecast in forecasts)
+    {
+    <tr>
+    <td>@forecast.Date.ToShortDateString()</td>
+    <td>@forecast.TemperatureC</td>
+    <td>@forecast.TemperatureF</td>
+    <td>@forecast.Summary</td>
+    </tr>
+    }
+    </tbody>
     </table>
-}*@
+    }*@
 
-@code {
+@*code {
     //private WeatherForecast[]? forecasts;
 
-   // protected override async Task OnInitializedAsync()
+    // protected override async Task OnInitializedAsync()
     //{
     //    forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
     //}
-}
+    }*@

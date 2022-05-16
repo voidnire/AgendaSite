@@ -19,6 +19,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/laura.vasconcelos/source/repos/BlazorApp4/BlazorApp4/Pages/EventComp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRDb21wLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/laura.vasconcelos/source/repos/BlazorApp4/BlazorApp4/Pages/Events.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -29,6 +33,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/laura.vasconcelos/source/repos/BlazorApp4/BlazorApp4/Pages/Lists.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/laura.vasconcelos/source/repos/BlazorApp4/BlazorApp4/Pages/ToDoList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9Eb0xpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/laura.vasconcelos/source/repos/BlazorApp4/BlazorApp4/_Imports.razor]
